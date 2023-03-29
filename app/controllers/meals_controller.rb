@@ -1,19 +1,24 @@
 class MealsController < ApplicationController
     
+
+    #show all meals
     def index
-    meals = Meal.all
-    render json: meals 
+        meals = Meal.all
+        render json: meals, status: :ok
     end
     
+    #show a single meal
     def show
         meal = (find_meal)
         if meal
-            render json: meal
+            render json: meal, status: :ok
         else
             render json: { error: "Meal not found" }, status: :not_found
         end
     end
 
+
+    # update a meal
     def update
         meal = (find_meal)
         if meal
@@ -28,16 +33,30 @@ class MealsController < ApplicationController
         end
     end
 
+
+    # create a meal
     def create
         meal = Meal.new(meal_params)
         if meal.save
-            render json; meal
+            render json: meal
         else
             render json: { errors: meal.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
-    
+    #delete a meal
+    def destroy
+        meal = (find_meal)
+        if meal
+            meal.destroy
+            render json: { message: "Meal deleted successfully" }, status: :ok
+        else
+            render json: { error: "Meal not found" }, status: :not_found
+        end
+
+    end
+
+
 
     private
 
