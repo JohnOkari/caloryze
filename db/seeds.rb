@@ -4,19 +4,22 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+#   Character.create(naJonteme: "Luke", movie: movies.first)
 puts "Seeding"
- # users table
-User.create(password: 123456, password_digest: 123456)
-User.create(password: 123789, password_digest: 123789)
-User.create(password: 987654, password_digest: 987654)
-User.create(password: 456321, password_digest: 456321)
+ # Seed data for users table
+User.create(username: "JohnDoe", password: "password123", password_digest: "password_digest_123")
+User.create(username: "JaneDoe", password: "password456", password_digest: "password_digest_456")
+User.create(username: "BobSmith", password: "password789", password_digest: "password_digest_789")
 
-# meals table
-Meal.create(food: "Grilled chicken", meal_type: "Lunch", calories: 500, user_id: 1)
-Meal.create(food: "Salmon with steamed vegetables", meal_type: "Dinner", calories: 600, user_id: 2)
-Meal.create(food: "Oatmeal with banana and almond milk", meal_type: "Breakfast", calories: 350, user_id: 3)
-Meal.create(food: "Greek yogurt with mixed berries and granola", meal_type: "Snack", calories: 200, user_id: 4)
+# Seed data for meals table
+Meal.create(food: "Eggs Benedict", meal_type: "breakfast", calories: 500, user_id: 1)
+Meal.create(food: "Grilled Chicken Salad", meal_type: "lunch", calories: 400, user_id: 1)
+Meal.create(food: "Spaghetti Bolognese", meal_type: "dinner", calories: 600, user_id: 2)
+Meal.create(food: "Greek Yogurt with Berries", meal_type: "breakfast", calories: 300, user_id: 2)
+Meal.create(food: "Turkey Sandwich", meal_type: "lunch", calories: 350, user_id: 2)
+Meal.create(food: "Grilled Salmon", meal_type: "dinner", calories: 550, user_id: 3)
+Meal.create(food: "Oatmeal with Fruit", meal_type: "breakfast", calories: 250, user_id: 3)
+Meal.create(food: "Caesar Salad", meal_type: "lunch", calories: 400, user_id: 3)
 
 
 
