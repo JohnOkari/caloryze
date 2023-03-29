@@ -10,6 +10,13 @@ class SessionsController < ApplicationController
         end
     end
 
+    def destroy
+        if session[:user_id]
+          session.delete :user_id
+          head :no_content
+        else
+          render json: { error: "You must be logged in to perform this action" }, status: :unauthorized
+        end
+    end
     
-
 end
