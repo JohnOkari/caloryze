@@ -28,6 +28,15 @@ class MealsController < ApplicationController
         end
     end
 
+    def create
+        meal = Meal.new(meal_params)
+        if meal.save
+            render json; meal
+        else
+            render json: { errors: meal.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     
 
     private
