@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import AddMeal from "../AddMeal/AddMeal";
 import "./MealsList.css";
 
-const MealsList = () => {
+const MealsList = ({user}) => {
   const [meals, setMeals] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState(null);
-  const [refreshMeals, setRefreshMeals] = useState(false); // new state variable
+  // const [refreshMeals, setRefreshMeals] = useState(false); // new state variable
 
   useEffect(() => {
     fetch("/meals")
@@ -48,16 +48,17 @@ const MealsList = () => {
       })
       .catch((error) => console.error(error));
   };
-  const handleAdd = () => {
+  const handleAdd = (newMeal) => {
     // Trigger a re-fetch of the meals list from the server
-    setRefreshMeals(!refreshMeals);
+    // setRefreshMeals(!refreshMeals);
+    setMeals([...meals, newMeal])
   };
 
   return (
     // <div className="meals-list">
     <div className="meal-container">
       <div className="add-meal-container">
-        <AddMeal onAdd={handleAdd} />
+        <AddMeal onAdd={handleAdd} user={user}/>
       </div>
       <div className="meal-table-container">
         <table className="meals-table">

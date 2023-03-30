@@ -24,7 +24,7 @@ function App() {
     <Topbar user={user} setUser={setUser} />
     {/* <Topbar/> */}
     <Routes>
-      <Route exact path="/" element={<Home/>} />
+      <Route exact path="/" element={<Home user={user}/>} />
       <Route exact path="/login" element={<Login/> }/>
     </Routes>
     </>

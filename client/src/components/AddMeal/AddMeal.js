@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import './AddMeal.css'
 
-const AddMeal = ({ onAdd }) => {
+const AddMeal = ({ onAdd, user }) => {
   const [food, setFood] = useState("");
   const [mealType, setMealType] = useState("");
   const [calories, setCalories] = useState("");
+  // console.log(user)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,6 +14,7 @@ const AddMeal = ({ onAdd }) => {
       food: food,
       meal_type: mealType,
       calories: parseInt(calories),
+      user_id: user.id
     };
 
     fetch("/meals", {
@@ -25,10 +27,10 @@ const AddMeal = ({ onAdd }) => {
       .then((response) => response.json())
       .then((data) => {
         onAdd(data);
+        console.log(data)
         setFood("");
         setMealType("");
         setCalories("");
-        // window.location.reload();
       })
       .catch((error) => console.error(error));
   };

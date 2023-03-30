@@ -1,10 +1,10 @@
 import MealsList from "../../components/meals/MealsList"
 import "./home.css"
 
-function Home() {
+function Home({user}) {
   return (
     <div className="container">
-    <MealsList className="MealsList" />
+    <MealsList className="MealsList" user={user} />
   </div>
   )
 }
