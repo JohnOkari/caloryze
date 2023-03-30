@@ -1,5 +1,7 @@
 class MealsController < ApplicationController
-    
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    # skip_before_action :authorize, only: :create
+    # before_action :authorize
 
     #show all meals
     def index
@@ -15,6 +17,13 @@ class MealsController < ApplicationController
         else
             render json: { error: "Meal not found" }, status: :not_found
         end
+    end
+
+
+    # create a meal
+    def create
+        meal = Meal.create!(meal_params)
+        render json: meal, status: :created
     end
 
 
@@ -34,20 +43,10 @@ class MealsController < ApplicationController
     end
 
 
-    # create a meal
-    def create
-        meal = Meal.new(meal_params)
-        if meal.save
-            render json: meal
-        else
-            render json: { errors: meal.errors.full_messages }, status: :unprocessable_entity
-        end
-    end
-
     #delete a meal
     def destroy
         meal = (find_meal)
-        if meal
+        if meal.save
             meal.destroy
             render json: { message: "Meal deleted successfully" }, status: :ok
         else
@@ -57,7 +56,6 @@ class MealsController < ApplicationController
     end
 
 
-
     private
 
     def find_meal
@@ -65,6 +63,10 @@ class MealsController < ApplicationController
     end
 
     def meal_params
-        params.permit(:food, :meal_type, :calories)
+        params.permit(:food, :meal_type, :calories, :user_id)
+    end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 end
