@@ -3,6 +3,7 @@ import Topbar from './components/topbar/Topbar';
 import Home from "./pages/home/Home";
 import React, { useEffect, useState } from "react";
 import Login from "./pages/Login";
+import Footer from "./components/footer/Footer";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route exact path="/" element={<Home user={user}/>} />
       <Route exact path="/login" element={<Login/> }/>
     </Routes>
+    <Footer/>
     </>
   );
 }
