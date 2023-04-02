@@ -1,11 +1,8 @@
 .total{
-  margin-right: 5%;
   font-weight: bold;
-}
-
-
-.bold {
-  font-weight: bold;
+  font-size: 130%;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 .meal-container {
@@ -15,7 +12,7 @@
 
 .meal-table-container {
   flex: 1;
-  padding-right: 20%;
+  padding-right: 0%;
   margin-right: 5%;
 }
 
@@ -26,7 +23,7 @@
 
 .meals-table {
   border-collapse: collapse;
-  width: 200%;
+  width: 100%;
 }
 
 .meals-table th,

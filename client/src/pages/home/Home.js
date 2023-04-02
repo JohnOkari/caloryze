@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MealsList from "../../components/meals/MealsList";
 import "./home.css";
-// import RecommendedMeals from "../../components/RecommendedMeals";
 
 function Home({ user }) {
   const [dailyCalorieGoal, setDailyCalorieGoal] = useState("");
@@ -47,6 +46,7 @@ function Home({ user }) {
           user={user}
           dailyCalorieGoal={dailyCalorieGoal}
         />
+        
       </div>
     </>
   );

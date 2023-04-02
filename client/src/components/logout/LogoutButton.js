@@ -1,11 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./LogoutButton.css"
-
+import "./LogoutButton.css";
 
 const LogoutButton = ({ onLogout }) => {
-    const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     fetch("/logout", {
@@ -14,19 +12,16 @@ const LogoutButton = ({ onLogout }) => {
       .then((res) => res.json())
       .then(() => {
         onLogout();
-        
+
         navigate("/"); // redirect to login page
       })
       .catch((err) => console.log(err));
+        window.location.reload();
   };
-
-  function handleClick() {
-    window.location.reload();
-  }
 
   return (
     <nav className="logout-navbar">
-      <button className="logout-btn" onClick={handleLogout} onClickk={handleClick}>
+      <button className="logout-btn" onClick={handleLogout}>
         Logout
       </button>
     </nav>

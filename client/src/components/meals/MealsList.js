@@ -5,7 +5,6 @@ import "./MealsList.css";
 const MealsList = ({ user }) => {
   const [meals, setMeals] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState(null);
-  // const [refreshMeals, setRefreshMeals] = useState(false); // new state variable
 
   useEffect(() => {
     fetch("/meals")
@@ -16,7 +15,6 @@ const MealsList = ({ user }) => {
 
   const handleEdit = (updatedData) => {
     // Send a PUT request to update the selected meal data on the server
-    // useEffect(()=>{},[]);
     fetch(`/meals/${updatedData.id}`, {
       method: "PATCH",
       headers: {
@@ -53,117 +51,118 @@ const MealsList = ({ user }) => {
     setMeals([...meals, newMeal]);
   };
 
-  // const getTotalCalories = (meals) => {
-  //   return meals.reduce((total, meal) => total + meal.calories, 0);
-  // };
-
   return (
-    // <div className="meals-list">
-    <div className="meal-container">
-      <div className="add-meal-container">
-        <AddMeal onAdd={handleAdd} user={user} />
-      </div>
-      <div className="meal-table-container">
-        <table className="meals-table">
-          <thead>
-            <tr>
-              <th>Food</th>
-              <th>Meal Type</th>
-              <th>Calories</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {meals.map((meal) => (
-              <tr key={meal.id}>
-                <td>
-                  {selectedMeal && selectedMeal.id === meal.id ? (
-                    <input
-                      type="text"
-                      value={selectedMeal.food}
-                      onChange={(event) =>
-                        setSelectedMeal({
-                          ...selectedMeal,
-                          food: event.target.value,
-                        })
-                      }
-                    />
-                  ) : (
-                    meal.food
-                  )}
-                </td>
-                <td>
-                  {selectedMeal && selectedMeal.id === meal.id ? (
-                    <select
-                      value={selectedMeal.meal_type}
-                      onChange={(event) =>
-                        setSelectedMeal({
-                          ...selectedMeal,
-                          meal_type: event.target.value,
-                        })
-                      }
-                    >
-                      <option value="breakfast">Breakfast</option>
-                      <option value="lunch">Lunch</option>
-                      <option value="dinner">Dinner</option>
-                      <option value="snack">Snack</option>
-                    </select>
-                  ) : (
-                    meal.meal_type
-                  )}
-                </td>
-                <td>
-                  {selectedMeal && selectedMeal.id === meal.id ? (
-                    <input
-                      type="number"
-                      value={selectedMeal.calories}
-                      onChange={(event) =>
-                        setSelectedMeal({
-                          ...selectedMeal,
-                          calories: parseInt(event.target.value),
-                        })
-                      }
-                    />
-                  ) : (
-                    meal.calories
-                  )}
-                </td>
-                <td>
-                  {selectedMeal && selectedMeal.id === meal.id ? (
-                    <>
-                      <button onClick={() => handleEdit(selectedMeal)}>
-                        Save
-                      </button>
-                      <button onClick={() => setSelectedMeal(null)}>
-                        Cancel
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button
-                        className="edit-btn"
-                        onClick={() => setSelectedMeal(meal)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="delete-btn"
-                        onClick={() => handleDelete(meal.id)}
-                      >
-                        Delete
-                      </button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <>
+      <p className="total">
+        Total Calories:
+        <span> {meals.reduce((total, meal) => total + meal.calories, 0)}</span>
+      </p>
 
-       <p className="total">Total Calories:<span> {meals.reduce((total, meal) => total + meal.calories, 0)}</span></p>
-   
-    </div>
+      <div className="meal-container">
+        <div className="add-meal-container">
+          <AddMeal onAdd={handleAdd} user={user} />
+        </div>
+        <div className="meal-table-container">
+          <table className="meals-table">
+            <thead>
+              <tr>
+                <th>Food</th>
+                <th>Meal Type</th>
+                <th>Calories</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {meals.map((meal) => (
+                <tr key={meal.id}>
+                  <td>
+                    {selectedMeal && selectedMeal.id === meal.id ? (
+                      <input
+                        type="text"
+                        value={selectedMeal.food}
+                        onChange={(event) =>
+                          setSelectedMeal({
+                            ...selectedMeal,
+                            food: event.target.value,
+                          })
+                        }
+                      />
+                    ) : (
+                      meal.food
+                    )}
+                  </td>
+                  <td>
+                    {selectedMeal && selectedMeal.id === meal.id ? (
+                      <select
+                        value={selectedMeal.meal_type}
+                        onChange={(event) =>
+                          setSelectedMeal({
+                            ...selectedMeal,
+                            meal_type: event.target.value,
+                          })
+                        }
+                      >
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="snack">Snack</option>
+                      </select>
+                    ) : (
+                      meal.meal_type
+                    )}
+                  </td>
+                  <td>
+                    {selectedMeal && selectedMeal.id === meal.id ? (
+                      <input
+                        type="number"
+                        value={selectedMeal.calories}
+                        onChange={(event) =>
+                          setSelectedMeal({
+                            ...selectedMeal,
+                            calories: parseInt(event.target.value),
+                          })
+                        }
+                      />
+                    ) : (
+                      meal.calories
+                    )}
+                  </td>
+                  <td>
+                    {selectedMeal && selectedMeal.id === meal.id ? (
+                      <>
+                        <button onClick={() => handleEdit(selectedMeal)}>
+                          Save
+                        </button>
+                        <button onClick={() => setSelectedMeal(null)}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className="edit-btn"
+                          onClick={() => setSelectedMeal(meal)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="delete-btn"
+                          onClick={() => handleDelete(meal.id)}
+                        >
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* <h1 className="total">Total Calories:<span> {meals.reduce((total, meal) => total + meal.calories, 0)}</span></h1> */}
+      </div>
+    </>
   );
 };
 export default MealsList;
