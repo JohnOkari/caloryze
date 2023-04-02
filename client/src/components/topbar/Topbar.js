@@ -23,6 +23,7 @@ function Topbar() {
       </div>
       <div className="topRight">
           <Link to="/" className="topListItem"> HOME</Link> 
+          <Link to="/about" className="topListItem"> ABOUT</Link>
           <Link to="/login" className="topListItem"> LOGIN</Link>
           <LogoutButton/>
       </div>

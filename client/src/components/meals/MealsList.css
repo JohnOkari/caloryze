@@ -1,11 +1,12 @@
+.total{
+  margin-right: 5%;
+  font-weight: bold;
+}
 
-/* 
-.meals-list {
-  display: flex;
-  flex-direction: column;
-  align-items: right;
-  padding: 20px;
-} */
+
+.bold {
+  font-weight: bold;
+}
 
 .meal-container {
   display: flex;
@@ -14,8 +15,8 @@
 
 .meal-table-container {
   flex: 1;
-  padding-right: 20px;
- margin-right: 5%;
+  padding-right: 20%;
+  margin-right: 5%;
 }
 
 .add-meal-container {
@@ -23,15 +24,14 @@
   padding-left: 20px;
 }
 
-
 .meals-table {
   border-collapse: collapse;
-  width: 100%;
+  width: 200%;
 }
 
 .meals-table th,
 .meals-table td {
-  border: 1px solid #ddd;
+  border: 1px solid #f3f3f3;
   padding: 8px;
   text-align: left;
 }
@@ -86,4 +86,69 @@ tr:hover {
   background-color: #e74c3c;
   color: #fff;
   margin-left: 0.5rem;
+}
+
+
+
+/* for screens less than 768px wide */
+@media (max-width: 768px) {
+  .meal-container {
+    flex-direction: column;
+  }
+
+  .meal-table-container {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .add-meal-container {
+    padding-left: 0;
+  }
+
+  .meals-table {
+    width: 100%;
+  }
+}
+
+/* for screens more than 768px wide */
+@media (min-width: 768px) {
+  .total {
+    margin-right: 5%;
+    font-weight: bold;
+  }
+
+  .meal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .meal-table-container {
+    flex: 1;
+    padding-right: 20%;
+    margin-right: 5%;
+  }
+
+  .add-meal-container {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  .meals-table {
+    border-collapse: collapse;
+    width: 200%;
+  }
+
+  .meals-table th,
+  .meals-table td {
+    border: 1px solid #f3f3f3;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .meals-table th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
 }

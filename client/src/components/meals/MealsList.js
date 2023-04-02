@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AddMeal from "../AddMeal/AddMeal";
 import "./MealsList.css";
 
-const MealsList = ({user}) => {
+const MealsList = ({ user }) => {
   const [meals, setMeals] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState(null);
   // const [refreshMeals, setRefreshMeals] = useState(false); // new state variable
@@ -50,15 +50,18 @@ const MealsList = ({user}) => {
   };
   const handleAdd = (newMeal) => {
     // Trigger a re-fetch of the meals list from the server
-    // setRefreshMeals(!refreshMeals);
-    setMeals([...meals, newMeal])
+    setMeals([...meals, newMeal]);
   };
+
+  // const getTotalCalories = (meals) => {
+  //   return meals.reduce((total, meal) => total + meal.calories, 0);
+  // };
 
   return (
     // <div className="meals-list">
     <div className="meal-container">
       <div className="add-meal-container">
-        <AddMeal onAdd={handleAdd} user={user}/>
+        <AddMeal onAdd={handleAdd} user={user} />
       </div>
       <div className="meal-table-container">
         <table className="meals-table">
@@ -157,7 +160,9 @@ const MealsList = ({user}) => {
           </tbody>
         </table>
       </div>
-      
+
+       <p className="total">Total Calories:<span> {meals.reduce((total, meal) => total + meal.calories, 0)}</span></p>
+   
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Home from "./pages/home/Home";
 import React, { useEffect, useState } from "react";
 import Login from "./pages/Login";
 import Footer from "./components/footer/Footer";
+import About from "./components/About/About";
 
 
 function App() {
@@ -23,9 +24,9 @@ function App() {
   return (
     <>
     <Topbar user={user} setUser={setUser} />
-    {/* <Topbar/> */}
     <Routes>
       <Route exact path="/" element={<Home user={user}/>} />
+      <Route exact path="/about" element={<About/> }/>
       <Route exact path="/login" element={<Login/> }/>
     </Routes>
     <Footer/>
