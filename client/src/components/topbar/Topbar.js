@@ -15,8 +15,6 @@ function Topbar() {
       </div>
       <div className="topCenter">
         <ul className="topList">
-          {/* <Link to="/" className="topListItem"> HOME</Link> */}
-          {/* <Link to="/register" className="topListItem"> SIGNUP</Link> */}
           {/* <Link to="/write" className="topListItem"> WRITE BLOG</Link> */}
           {/* <LogoutButton/> */}
         </ul>
