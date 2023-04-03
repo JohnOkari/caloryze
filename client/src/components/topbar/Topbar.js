@@ -15,14 +15,13 @@ function Topbar() {
       </div>
       <div className="topCenter">
         <ul className="topList">
-          {/* <Link to="/write" className="topListItem"> WRITE BLOG</Link> */}
-          {/* <LogoutButton/> */}
+          {/* <Link to="/" className="topListItem"> HOME</Link> */}
+          {/* <Link to="/register" className="topListItem"> SIGNUP</Link> */}
         </ul>
       </div>
       <div className="topRight">
           <Link to="/" className="topListItem"> HOME</Link> 
           <Link to="/about" className="topListItem"> ABOUT</Link>
-          <Link to="/login" className="topListItem"> LOGIN</Link>
           <LogoutButton/>
       </div>
     </div>

@@ -27,7 +27,6 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Home user={user}/>} />
       <Route exact path="/about" element={<About/> }/>
-      <Route exact path="/login" element={<Login/> }/>
     </Routes>
     <Footer/>
     </>

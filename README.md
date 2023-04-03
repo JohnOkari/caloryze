@@ -11,7 +11,7 @@ As a user, I can:
 
 1. Login and Authentication 
 2. Fetch meal details, e.g calories, meals_type, etc
-4. See number of calories in a day 
+4. See total number of calories in a day 
 5. Add, Edit, and Delete meals.
 
 

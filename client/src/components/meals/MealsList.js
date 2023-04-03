@@ -46,8 +46,8 @@ const MealsList = ({ user }) => {
       })
       .catch((error) => console.error(error));
   };
+  
   const handleAdd = (newMeal) => {
-    // Trigger a re-fetch of the meals list from the server
     setMeals([...meals, newMeal]);
   };
 
@@ -159,8 +159,6 @@ const MealsList = ({ user }) => {
             </tbody>
           </table>
         </div>
-
-        {/* <h1 className="total">Total Calories:<span> {meals.reduce((total, meal) => total + meal.calories, 0)}</span></h1> */}
       </div>
     </>
   );
